@@ -5,7 +5,6 @@ using namespace std;
 /**
  * @brief 
  * randomly generates pages for the simulation
- * randomly generates pages for the simulation
  * 
  * @param numPages 
  * @param maxPageNum 
@@ -42,10 +41,6 @@ bool FIFO(unordered_set<int>& pageSet, queue<int>& pageQueue, int page, int capa
         pageSet stores distinct pages in the memory
         pageQueue stores the order of pages in the memory
     */
-    /* 
-        pageSet stores distinct pages in the memory
-        pageQueue stores the order of pages in the memory
-    */
     if (pageSet.find(page) == pageSet.end()) {
         if (pageSet.size() >= capacity) {
             int oldestPage = pageQueue.front();
@@ -63,8 +58,6 @@ bool FIFO(unordered_set<int>& pageSet, queue<int>& pageQueue, int page, int capa
  * @brief LRU Page Replacement Algorithm
  * If page is found return false by pushing it to the front of the list
  * else push page to front and return true since it is a page fault
- * If page is found return false by pushing it to the front of the list
- * else push page to front and return true since it is a page fault
  * 
  * @param pageMap 
  * @param pageList 
@@ -75,8 +68,6 @@ bool FIFO(unordered_set<int>& pageSet, queue<int>& pageQueue, int page, int capa
  */
 bool LRU(unordered_map<int, list<int>::iterator>& pageMap, list<int>& pageList, int page, int capacity) {
     /* 
-        The pageMap stores the pageNumber and the iterator to the latest location of the page in the pageList.
-        The pageList stores the order of pages in the memory
         The pageMap stores the pageNumber and the iterator to the latest location of the page in the pageList.
         The pageList stores the order of pages in the memory
     */
@@ -110,18 +101,13 @@ int main(){
     cout << endl;
 
     //FIFO setup
-    //FIFO setup
     unordered_set<int> pageSet;
     queue<int> pageQueue; 
 
     //LRU setup
-    //LRU setup
     unordered_map<int, list<int>::iterator> pageMap;
     list<int> pageList;
 
-    /* 
-        Initialize the memory with the generated pages for both LRU and FIFO
-    */
     /* 
         Initialize the memory with the generated pages for both LRU and FIFO
     */
@@ -152,7 +138,6 @@ int main(){
             /* check page fault for LRU */
             if(LRU(pageMap, pageList, page, capacity)) lru_page_faults++;
         }
-        cout << "\nNumber of page_access: " << page_access << endl;
         cout << "\nNumber of page_access: " << page_access << endl;
         cout << "Page Faults (FIFO): " << fifo_page_faults << endl;
         cout << "Page Faults (LRU): " << lru_page_faults << endl;
