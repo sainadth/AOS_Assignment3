@@ -61,7 +61,7 @@ bool FIFO(unordered_set<int>& pageSet, queue<int>& pageQueue, int page, int capa
  */
 bool LRU(unordered_map<int, list<int>::iterator>& pageMap, list<int>& pageList, int page, int capacity) {
     /* 
-        The pageMap stores the pageNumber and the pointer iterator the location of the page in the pageList. To efficiently handle the page repealcement of
+        The pageMap stores the pageNumber and the iterator to the location of the page in the pageList. To efficiently handle the page repealcement of
         the page.
     */
     bool found = false;
@@ -72,6 +72,7 @@ bool LRU(unordered_map<int, list<int>::iterator>& pageMap, list<int>& pageList, 
             pageMap.erase(lruPage);
         }
     } else {
+        /* Ate around 2hrs in debugging, I'll remember you for the rest of the semester mister pageList */
         found = true;
         pageList.erase(pageMap[page]);
     }
@@ -83,11 +84,11 @@ bool LRU(unordered_map<int, list<int>::iterator>& pageMap, list<int>& pageList, 
 int main(){
     int numPages = 100;
     int maxPageNum = 1000;
-    int capacity = 100;
+    int capacity = 200;
 
     vector<int> pages = generatePages(numPages, maxPageNum);
 
-    cout << "Custom Generated Pages: \n";
+    cout << "My Custom Generated Pages: \n";
     for(auto i : pages)
         cout << i << " ";
     cout << endl;
@@ -113,7 +114,7 @@ int main(){
     int lru_page_faults = 0;
     
     // srand(time(0));
-    for(int hits = 1; hits < 1e7; hits *= 10){
+    for(int hits = 1; hits < INT_MAX; hits *= 10){
         for(int i = 0; i <= hits; i++){
             int page = rand() % (maxPageNum + 1);
             // cout << page << " ";
