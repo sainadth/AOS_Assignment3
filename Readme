@@ -1,0 +1,20 @@
+## Implementation of comparision between FIFO and LRU in C++
+Comparison between LRU and FIFO, ofcourse LRU is the efficient
+
+## Used unordered_set and queue to Implement FIFO effectively
+- Just a queue following FIFO rule
+- no mechanism to handle recent usage of a page
+
+## Used unordered_map and list (double linked list) to Implement LRU effectively
+- uses a double linked list foe efficient removal and unordered_map for fast lookup
+- recently used pages are most likely stays in memory
+
+### MY TIME EATER
+
+MISSED TO PUSH THE RECENTLY TO THE HEAD (DEBUGGED 2HRS my bad) line 75
+
+## How to execute
+g++ pageFault.cpp -o pageFault;  .\pageFault.exe
+
+
+## Full OOPS implementation comming soon.... (stay tuned)
